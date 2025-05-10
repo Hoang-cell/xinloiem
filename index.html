@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="css/typinyin.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/typinyin.js"  charset="utf-8" async defer></script>
+	<script type="text/javascript" src="js/ConvertPinyin.js" ></script>
+	<script>
+		var myword = ["Gửi đến"," công chúa", " bé nhỏ"," của anh",". Anh chân",""," thành xin"," lỗi em"," vì đã"," làm em"," giận khiến",{del:3},"iến"," em không vui",",\n",
+						" mong em"," nguôi ngoai"," và đừng"," giận anh"," nữa,"," anh đã"," biết lỗi"," của anh rồi"," anh"," xin"," lỗi bé iu"," nhiều",",","em",
+						" đừng giân"," anh nữa"," nhé, anh sẻ"," không"," làm như"," thế"," nửa xin"," em hãy"," tha thứ"," cho anh"," và đừng"," giận"," anh nữa",","," yêu"," em",
+						" bé của"," anh nhìu nhìu "," nhé","!"," Anh yêu"," em"," nhiều"," lắm",","," yêu"," em"," mãi mãi",","," yêu"," em"," đến"," hết cuộc đời này",","," yêu em",
+		
+						];
+		window.onload = function(){
+			var demo = new Typinyin();
+			demo.attach('#typinyin_demo'); 
+			demo.setOptions({
+				sentences: [
+					{
+						ch: myword,
+						py: ConvertArray(myword),
+					}
+				], 
+				startDelay: 1000, 
+				typeSpeed: 80, 
+				pause: 1000, 
+				backSpeed: 50, 
+				cursorChar: "|", 
+				loop: false, 
+			});
+			demo.finished = function() {
+				console.log("Typinyin.js Demo Finished!"); 
+			};
+			demo.init(); 
+		}
+	</script>
+</head>
+
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span id="typinyin_demo" class="black"> </span> <br />
+				
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						Vy, I love you
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Yeu em mai mai <br/>
+						<div class="signature">- Công Trí</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+			Người viết Võ Công Trí<br />
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2024, 10, 20);
+		together.setHours(16);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+		}
+	</script>
+</body>
+</html>
